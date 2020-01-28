@@ -195,7 +195,11 @@ for i in node:
 ## Obtaining waveform: Branch currents
 ib, ib_interp = [], []
 for i in branch:
-    ib.append(l.getData(f'I(L{i + 1})'))
+    # The if sentence below has been added.
+    if CS_PER_STAGE != 0:
+        ib.append(l.getData(f'I(L{i + 1})') + l.getData(f'I(C{i + 1}S)'))
+    else:
+        ib.append(l.getData(f'I(L{i + 1})'))
     ib_interp.append(interp.interp1d(time, ib[i], kind='linear'))
     
 ## Plot setting
