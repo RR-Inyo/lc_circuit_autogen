@@ -152,7 +152,7 @@ load = f'RL {N_STAGES + 2} 0 {R_LOAD}' + BR
 netlist += load
 
 ### Simulation configuration
-cond = f'.tran {T_SIM}' + BR +'.backanno' + BR + '.end'
+cond = f'.tran {T_SIM}' + BR + '.end'
 netlist += cond
 
 # ------------------------------
